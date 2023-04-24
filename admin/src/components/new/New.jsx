@@ -347,6 +347,8 @@ const New = ({ closeNew }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const axiosInstance = axios.create({baseURL: process.env.REACT_APP_API_URL})
+
   const [delivery, setDelivery] = useState(true);
   const [openDuo, setOpenDuo] = useState(false);
   const [tip, setTip] = useState(0);
@@ -507,7 +509,7 @@ const New = ({ closeNew }) => {
         totalPrice,
       };
       console.log(newOrder);
-      await axios.post(`/orders/`, newOrder);
+      await axiosInstance.post(`/orders/`, newOrder);
       closeNew(false);
       navigate("/");
       dispatch(resetCart());

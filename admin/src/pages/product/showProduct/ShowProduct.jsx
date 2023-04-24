@@ -15,6 +15,7 @@ const ShowProduct = ({ inputs, title }) => {
   const { data, loading, error } = useFetch(`/products/find/${id}`);
   const [openEditor, setOpenEditor] = useState(false);
   console.log(data);
+  
 
   return (
     <div className="show">

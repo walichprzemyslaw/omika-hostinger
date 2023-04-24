@@ -12,6 +12,8 @@ import OrderDetails from "../orderDetails/OrderDetails";
 
 const Modal = ({ order, closeModal }) => {
   const [openEditor, setOpenEditor] = useState(false);
+  const axiosInstance = axios.create({baseURL: process.env.REACT_APP_API_URL})
+
   const { data, loading, error } = useFetch(
     `/employees/find/${order.paymentReciver}`
   );
@@ -20,7 +22,7 @@ const Modal = ({ order, closeModal }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/orders/${id}`);
+      await axiosInstance.delete(`/orders/${id}`);
       closeModal(false);
     } catch (err) {
       error.status(err.status).message(err.message);

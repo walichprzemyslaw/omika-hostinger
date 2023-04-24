@@ -20,6 +20,7 @@ const Card = ({ order, showProducts, index }) => {
   const [openReciver, setOpenReciver] = useState(false);
   const [info, setInfo] = useState(order);
   const [time, setTime] = useState(order.deliveryTime);
+  const axiosInstance = axios.create({baseURL: process.env.REACT_APP_API_URL})
   console.log(time.slice(0, 2));
   console.log(time.slice(3, 5));
 
@@ -45,7 +46,7 @@ const Card = ({ order, showProducts, index }) => {
       };
       setInfo(newOrder);
       console.log(newOrder);
-      await axios.put(`/orders/${order._id}`, newOrder);
+      await axiosInstance.put(`/orders/${order._id}`, newOrder);
       setOpenStatus(false);
       // navigate("/");
       // closeEditor(false);
@@ -64,7 +65,7 @@ const Card = ({ order, showProducts, index }) => {
       };
       setInfo(newOrder);
       console.log(newOrder);
-      await axios.put(`/orders/${order._id}`, newOrder);
+      await axiosInstance.put(`/orders/${order._id}`, newOrder);
       setOpenMethod(false);
     } catch (error) {
       console.log(error);
@@ -79,7 +80,7 @@ const Card = ({ order, showProducts, index }) => {
       };
       setInfo(newOrder);
       console.log(newOrder);
-      await axios.put(`/orders/${order._id}`, newOrder);
+      await axiosInstance.put(`/orders/${order._id}`, newOrder);
       setOpenMethod(false);
     } catch (error) {
       console.log(error);
@@ -94,7 +95,7 @@ const Card = ({ order, showProducts, index }) => {
       };
       setInfo(newOrder);
       console.log(newOrder);
-      await axios.put(`/orders/${order._id}`, newOrder);
+      await axiosInstance.put(`/orders/${order._id}`, newOrder);
       setOpenReciver(false);
     } catch (error) {
       console.log(error);

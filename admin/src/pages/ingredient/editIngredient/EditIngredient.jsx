@@ -16,6 +16,7 @@ const EditIngredient = ({ inputs, title }) => {
   // const [category, setCategory] = useState("");
   const [normalPrice, setNormalPrice] = useState();
   const [largePrice, setLargePrice] = useState();
+  const axiosInstance = axios.create({baseURL: process.env.REACT_APP_API_URL})
 
   // let price;
   // category === "pizza"
@@ -39,7 +40,7 @@ const EditIngredient = ({ inputs, title }) => {
     e.preventDefault();
     console.log({ ...info });
     try {
-      await axios.put(`/ingredients/${id}`, { ...info });
+      await axiosInstance.put(`/ingredients/${id}`, { ...info });
       navigate("/ingredients/");
     } catch (error) {
       console.log(error);

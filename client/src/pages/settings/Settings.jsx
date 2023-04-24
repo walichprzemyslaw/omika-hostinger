@@ -11,6 +11,7 @@ import ReceiptLongRoundedIcon from "@mui/icons-material/ReceiptLongRounded";
 const Settings = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const axiosInstance = axios.create({baseURL: process.env.REACT_APP_API_URL})
   const [openOrder, setOpenOrder] = useState(false);
   const [order, setOrder] = useState({});
   const id = location.pathname.split("/")[2];
@@ -38,7 +39,7 @@ const Settings = () => {
         ...info,
       };
       console.log(updateUser);
-      await axios.put(`/users/${id}`, updateUser);
+      await axiosInstance.put(`/users/${id}`, updateUser);
       navigate("/");
     } catch (error) {}
   };

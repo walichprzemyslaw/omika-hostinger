@@ -333,6 +333,8 @@ const Checkout = ({ closeCheckout }) => {
     { value: "żwirki i wigury", label: "Żwirki i Wigury", id: "street" },
   ];
 
+  const axiosInstance = axios.create({baseURL: process.env.REACT_APP_API_URL})
+
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -525,7 +527,7 @@ const Checkout = ({ closeCheckout }) => {
           delivery,
           bankId,
         };
-        const response = await axios.post("/orders", newOrder);
+        const response = await axiosInstance.post("/orders", newOrder);
         
         if (response.data.paymentMethod === "online") {
           navigate(response.data.url);
