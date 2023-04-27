@@ -6,7 +6,7 @@ import {
   getIngredients,
   updateIngredient,
   getByCategory
-} from "../controllers/Ingredient.js";
+} from "../controllers/ingredient.js";
 import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
